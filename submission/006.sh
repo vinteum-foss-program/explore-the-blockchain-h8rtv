@@ -12,7 +12,7 @@ function find_txid
     for txid in $transactions
     do
         rawtx=$(bitcoin-cli getrawtransaction $txid)
-        txidsin=$(bitcoin-cli decoderawtransaction $rawtx | jq -r '.vin.[] | .txid')
+        txidsin=$(bitcoin-cli decoderawtransaction $rawtx | jq -r '.vin | .[] | .txid')
 
         for txidin in $txidsin
         do

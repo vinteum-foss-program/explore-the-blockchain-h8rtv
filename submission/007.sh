@@ -2,7 +2,7 @@
 
 # Only one single output remains unspent from block 123,321. What address was it sent to?
 
-txs=$(bitcoin-cli getblock $(bitcoin-cli getblockhash 123321) | jq -r ".tx.[]")
+txs=$(bitcoin-cli getblock $(bitcoin-cli getblockhash 123321) | jq -r '.tx | .[]')
 
 function find_utxo
 {

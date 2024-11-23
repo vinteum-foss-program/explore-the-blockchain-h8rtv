@@ -11,7 +11,7 @@ function find_utxo
         rawtx=$(bitcoin-cli getrawtransaction $txid)
         tx=$(bitcoin-cli decoderawtransaction $rawtx)
         nouts=$(echo $tx | jq '.vin | length')
-        rawtx=$(bitcoin-cli getrawtransaction $txid)
+
         for nout in $(seq 0 $(($nouts - 1)))
         do
             txout=$(bitcoin-cli gettxout $txid $nout | jq -r .scriptPubKey.address)
